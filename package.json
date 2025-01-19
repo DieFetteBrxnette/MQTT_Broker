@@ -1,0 +1,18 @@
+{
+	"name": "faps-tocaro",
+	"version": "1.0.0",
+	"description": "Node-Red Implementation for dyn. connection management in regards to the ToCaro ESP32 System",
+	"main": "/dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"ts-build": "tsc",
+		"ts-watch": "tsc -w",
+		"start": "npx node-red -settings settings.js"
+	},
+	"author": "Paul Marenbach",
+	"license": "ISC",
+	"dependencies": {
+		"node-red": "^4.0.8",
+		"typescript": "^5.7.3"
+	}
+}
