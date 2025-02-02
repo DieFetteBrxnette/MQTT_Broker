@@ -1,7 +1,7 @@
 {
 	"name": "faps-tocaro",
 	"version": "1.0.0",
-	"description": "Node-Red Implementation for dyn. connection management in regards to the ToCaro ESP32 System",
+	"description": "Node-Red implementation for dyn. connection management for the ToCaro ESP32 system",
 	"main": "/dist/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
