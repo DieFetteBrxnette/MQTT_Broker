@@ -7,5 +7,5 @@ if [ -n "$PIDS" ]; then
     echo "Process(es) running on port 1883: $PIDS"
 fi
 
-echo "Starting Mosquitto..."
+echo "Starting Mosquitto... (check logs)"
 mosquitto -v -c mosquitto.conf

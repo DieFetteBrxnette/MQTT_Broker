@@ -7,12 +7,14 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"ts-build": "tsc",
 		"ts-watch": "tsc -w",
-		"start": "npx node-red -settings settings.js"
+		"start-dev": "npx node-red -settings node-red_settings.js",
+		"start": "npx node-red -settings node-red_settings.js"
 	},
 	"author": "Paul Marenbach",
 	"license": "ISC",
 	"dependencies": {
 		"node-red": "^4.0.8",
-		"typescript": "^5.7.3"
+		"node-red-dashboard": "^3.6.5",
+		"node-red-tocaro-nodes": "file:nodes"
 	}
 }

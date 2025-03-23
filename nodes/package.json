@@ -1,0 +1,17 @@
+{
+	"name": "node-red-tocaro-nodes",
+	"version": "1.0.0",
+	"description": "Nodes for the ToCaro ESP32 system",
+	"scripts": {
+	},
+	"author": "Paul Marenbach",
+	"license": "ISC",
+	
+	"node-red": {
+        "nodes": {
+            "client-manager": "client-manager.js",
+			"client": "client.js",
+			"lower-case": "lower-case.js"
+        }
+    }
+}

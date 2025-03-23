@@ -8,5 +8,5 @@ if [ -n "$PIDS" ]; then
     kill -9 $PIDS
 fi
 
-echo "Starting Mosquitto..."
+echo "Starting Mosquitto... (check logs)"
 mosquitto -v -c mosquitto.conf

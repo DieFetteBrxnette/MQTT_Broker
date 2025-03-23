@@ -1,0 +1,6 @@
+{
+    "name": "node-red-project",
+    "description": "toCaro NodeRed Project",
+    "version": "0.0.1",
+    "private": true
+}
