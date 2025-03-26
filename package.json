@@ -15,6 +15,6 @@
 	"dependencies": {
 		"node-red": "^4.0.8",
 		"node-red-dashboard": "^3.6.5",
-		"node-red-tocaro-nodes": "file:nodes"
+		"node-red-tocaro-nodes": "file:tocaro-nodes"
 	}
 }

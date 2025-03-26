@@ -675,8 +675,7 @@
             "client-manager": {
                 "name": "client-manager",
                 "types": [
-                    "client-manager",
-                    "dynamic-device"
+                    "client-manager"
                 ],
                 "enabled": true,
                 "local": false,

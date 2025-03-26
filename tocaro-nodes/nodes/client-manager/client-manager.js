@@ -1,8 +1,5 @@
-// client-manager.js
 module.exports = function(RED) {
-    // Import the client hook manager
-    const clientHooks = require('./hooks/creation-hook.js')(RED);
-    const api = require('./apis/node-register-api.js')(RED);
+    const clientCreator = require('../create.js')(RED);
     
     function ClientManager(config) {
         RED.nodes.createNode(this, config);
@@ -10,18 +7,26 @@ module.exports = function(RED) {
         
         // Listen for new client connections
         node.on('input', function(msg) {
-            if (!msg || !msg.payload) {
+            if (!msg || !msg.payload || typeof msg.payload !== "string" || msg.payload.length === 0) {
                 node.warn("Received invalid message");
                 return;
             }
             
-            const clientId = msg.payload.toString();
+            // Extract the client ID from the message and sanitize it
+            const clientId = msg.payload.toString().trim().replaceAll(" ", "_");
             console.log(`Received new client: ${clientId}`);
             
             try {
-                // Trigger the hook to create the client node
-                const result = clientHooks.triggerClientDetected(clientId);
+                const nodeType = `tocaro-client-${clientId}`;
+                // Check if the client already exists
+                if (RED.nodes.getNode(nodeType)) {
+                    node.status({ fill: "yellow", shape: "ring", text: `Client already exists: ${clientId}` });
+                    return;
+                }
                 
+                // Create the client node
+                const result = clientCreator.createClient(clientId);
+
                 if (result) {
                     node.status({ fill: "green", shape: "dot", text: `Added client: ${clientId}` });
                 } else {
@@ -35,4 +40,4 @@ module.exports = function(RED) {
     }
     
     RED.nodes.registerType("client-manager", ClientManager);
-}
+};
