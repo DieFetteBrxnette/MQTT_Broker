@@ -12,9 +12,6 @@
         "nodes": {
             "client-manager": "nodes/client-manager/client-manager.js",
 			"client": "nodes/client/client.js"
-        },
-		"hooks": {
-			"onClientDetected.tocaro": "hooks/creation-hook.js"
-		}
+        }
     }
 }

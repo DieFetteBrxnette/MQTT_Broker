@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('router', {
+        category: 'toCaro',
+        defaults: {
+            name: { value: "" },
+            color: { value: "#E6E0F8" },
+            nodeIcon: { value: "bridge-dash.svg" }
+        },
+        inputs: 1,
+        outputs: 0,
+        color: "#E6E0F8",
+        label: function() {
+            return this.name || "MQTT Router";
+        },
+        paletteLabel: "MQTT Router"
+    });
+</script>
+
+<script type="text/html" data-template-name="router">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="router">
+    <p>A node that routes mqtt messages based on the available client nodes in all flows.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload.msg <span class="property-type"></span></dt>
+        <dd>MQTT Message to be forwarded to the ESP-32</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>None <span class="property-type"></span></dt>
+        <dd>Currently this node has no output.</dd>
+    </dl>
+</script>

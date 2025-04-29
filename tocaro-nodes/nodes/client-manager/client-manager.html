@@ -1,21 +1,18 @@
 <script type="text/javascript">
     RED.nodes.registerType('client-manager', {
-        category: 'Node creation',
+        category: 'toCaro',
         color: '#a6bbcf',
         defaults: {
             name: { value: "" },
-            category: { value: "ToCaro", required: true },
-            nodeId: { value: "tocaro", required: true },
-            nodeColor: { value: "#E6E0F8" },
-            nodeIcon: { value: "bridge.png" }
+            flow: { value: "toCaros", required: true },
+            url: { value: "http://127.0.0.1:1880/", required: true },
         },
         inputs: 1,
         outputs: 1,
         icon: "font-awesome/fa-plus",
         label: function() {
-            return this.name || "Node Creator";
-        },
-        paletteLabel: "Node Creator"
+            return this.name || "Client Creator";
+        }
     });
 </script>
 
@@ -25,28 +22,20 @@
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-category"><i class="fa fa-tag"></i> Category</label>
-        <input type="text" id="node-input-topic" placeholder="ToCaroNodes">
+        <label for="node-input-flow"><i class="fa fa-tag"></i> Flow-Id</label>
+        <input type="text" id="node-input-flow" placeholder="i.e. toCaros">
     </div>
     <div class="form-row">
-        <label for="node-input-nodeId"><i class="fa fa-id-card"></i> Node ID</label>
-        <input type="text" id="node-input-nodeId" placeholder="Node ID (required)">
-    </div>
-    <div class="form-row">
-        <label for="node-input-nodeColor"><i class="fa fa-paint-brush"></i> Color</label>
-        <input type="color" id="node-input-nodeColor">
-    </div>
-    <div class="form-row">
-        <label for="node-input-nodeIcon"><i class="fa fa-image"></i> Icon</label>
-        <input type="text" id="node-input-nodeIcon" placeholder="Icon filename">
+        <label for="node-input-url"><i class="fa fa-tag"></i> Node-Red URL</label>
+        <input type="text" id="node-input-url" placeholder="i.e. http://127.0.0.1:1880/">
     </div>
 </script>
 
 <script type="text/html" data-help-name="client-manager">
-    <p>A node that creates new nodes for the appropriate mqtt-connections dynamically.</p>
+    <p>A node that creates new client nodes for the appropriate mqtt-connections dynamically in the specified flow.</p>
     <h3>Inputs</h3>
     <dl class="message-properties">
-        <dt>payload.newClient <span class="property-type">object</span></dt>
-        <dd>Configuration object for the new client node to be created</dd>
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Configuration string for the new client node to be created with the mqtt id included</dd>
     </dl>
 </script>

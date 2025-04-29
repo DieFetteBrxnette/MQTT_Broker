@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('client', {
+        category: 'toCaro',
+        defaults: {
+            name: { value: "" },
+            mqttId: { value: "tocaro", required: true },
+            color: { value: "#E6E0F8" },
+            nodeIcon: { value: "bridge.svg" }
+        },
+        inputs: 1,
+        outputs: 1,
+        mqttId: this.mqttId || null,
+        icon: "font-awesome/fa-microchip",
+        color: "#E6E0F8",
+        label: function() {
+            return this.name || "Client Node";
+        },
+        paletteLabel: "Client Node"
+    });
+</script>
+
+<script type="text/html" data-template-name="client">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-mqttId"><i class="fa fa-id-card"></i> MQTT-ID</label>
+        <input type="text" id="node-input-mqttId" placeholder="Id of the mqtt device (required)">
+    </div>
+    <div class="form-row">
+        <label for="node-input-nodeIcon"><i class="fa fa-image"></i> Icon</label>
+        <input type="text" id="node-input-nodeIcon" placeholder="Icon filename">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="client">
+    <p>A node that creates new nodes for the appropriate mqtt-connections dynamically.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload.msg <span class="property-type"></span></dt>
+        <dd>MQTT Message to be forwarded to the ESP-32</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload.msg <span class="property-type"></span></dt>
+        <dd>Recived MQTT Message forwareded for use in NodeRed</dd>
+    </dl>
+</script>
