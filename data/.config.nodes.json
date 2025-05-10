@@ -693,6 +693,17 @@
                 "user": false,
                 "module": "node-red-tocaro-nodes",
                 "file": "C:\\Users\\Marenbach\\WebstormProjects\\MQTT_Broker\\node_modules\\node-red-tocaro-nodes\\nodes\\client\\client.js"
+            },
+            "router": {
+                "name": "router",
+                "types": [
+                    "router"
+                ],
+                "enabled": true,
+                "local": false,
+                "user": false,
+                "module": "node-red-tocaro-nodes",
+                "file": "C:\\Users\\Marenbach\\WebstormProjects\\MQTT_Broker\\node_modules\\node-red-tocaro-nodes\\nodes\\router\\router.js"
             }
         }
     }

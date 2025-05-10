@@ -4,18 +4,17 @@
         defaults: {
             name: { value: "" },
             mqttId: { value: "tocaro", required: true },
-            color: { value: "#E6E0F8" },
             nodeIcon: { value: "bridge.svg" }
         },
         inputs: 1,
         outputs: 1,
         mqttId: this.mqttId || null,
+        color: "#97c139",
         icon: "font-awesome/fa-microchip",
-        color: "#E6E0F8",
+        paletteLabel: "Client Node",
         label: function() {
             return this.name || "Client Node";
-        },
-        paletteLabel: "Client Node"
+        }
     });
 </script>
 

@@ -11,7 +11,8 @@
 		"version": ">=2.0.0",
         "nodes": {
             "client-manager": "nodes/client-manager/client-manager.js",
-			"client": "nodes/client/client.js"
+			"client": "nodes/client/client.js",
+			"router": "nodes/router/router.js"
         }
     }
 }

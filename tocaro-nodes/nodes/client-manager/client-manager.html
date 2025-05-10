@@ -1,7 +1,6 @@
 <script type="text/javascript">
     RED.nodes.registerType('client-manager', {
         category: 'toCaro',
-        color: '#a6bbcf',
         defaults: {
             name: { value: "" },
             flow: { value: "toCaros", required: true },
@@ -9,9 +8,11 @@
         },
         inputs: 1,
         outputs: 1,
+        color: '#97c139',
         icon: "font-awesome/fa-plus",
+        paletteLabel: "Client Manager",
         label: function() {
-            return this.name || "Client Creator";
+            return this.name || "Client Manager";
         }
     });
 </script>

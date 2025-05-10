@@ -3,16 +3,16 @@
         category: 'toCaro',
         defaults: {
             name: { value: "" },
-            color: { value: "#E6E0F8" },
-            nodeIcon: { value: "bridge-dash.svg" }
+            url: { value: "http://127.0.0.1:1880/", required: true },
         },
         inputs: 1,
-        outputs: 0,
-        color: "#E6E0F8",
+        outputs: 1,
+        color: "#97c139",
+        icon: 'bridge-dash.svg',
+        paletteLabel: "MQTT Router",
         label: function() {
             return this.name || "MQTT Router";
-        },
-        paletteLabel: "MQTT Router"
+        }
     });
 </script>
 
@@ -21,6 +21,10 @@
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-tag"></i> Node-Red URL</label>
+        <input type="text" id="node-input-url" placeholder="i.e. http://127.0.0.1:1880/">
+    </div>
 </script>
 
 <script type="text/html" data-help-name="router">
@@ -28,11 +32,11 @@
     <h3>Inputs</h3>
     <dl class="message-properties">
         <dt>payload.msg <span class="property-type"></span></dt>
-        <dd>MQTT Message to be forwarded to the ESP-32</dd>
+        <dd>MQTT Message to be forwarded to the ESP-32 according to the connections in any flows.</dd>
     </dl>
     <h3>Outputs</h3>
     <dl class="message-properties">
-        <dt>None <span class="property-type"></span></dt>
-        <dd>Currently this node has no output.</dd>
+        <dt>payload.msg <span class="property-type"></span></dt>
+        <dd>MQTT Message to be forwarded to the specified ESP-32</dd>
     </dl>
 </script>

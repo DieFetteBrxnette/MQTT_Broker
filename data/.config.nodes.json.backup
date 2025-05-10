@@ -686,7 +686,7 @@
             "client": {
                 "name": "client",
                 "types": [
-                    "client-manager"
+                    "client"
                 ],
                 "enabled": true,
                 "local": false,
