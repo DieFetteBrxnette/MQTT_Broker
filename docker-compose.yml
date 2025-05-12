@@ -1,6 +1,7 @@
 services:
   nodered:
     build: .
+    image: nodered-mqtt:latest
     ports:
       - "1880:1880"
     volumes:
