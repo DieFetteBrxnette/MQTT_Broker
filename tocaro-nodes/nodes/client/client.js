@@ -1,3 +1,6 @@
+// This Node-Red node is a dummy node that is used to represent a mqtt client in the Node-Red flow.
+// This node is automatically created and configured by the client-manager node when a new mqtt client is registered.
+// This node does not have any functionality, it is just a placeholder for the mqtt client.
 const mqttServer = require('mqtt');
 module.exports = function(RED) {
     function Client(config) {
@@ -10,8 +13,6 @@ module.exports = function(RED) {
             this.status({ fill: "red", shape: "ring", text: 'Configuration error' });
             return;
         }
-
-        const clientId = config.mqttId.toString().trim().replaceAll(" ", "_");
     }
 
     RED.nodes.registerType("client", Client);

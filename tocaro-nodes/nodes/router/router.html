@@ -1,9 +1,13 @@
+<!-- 
+    HTML File for custom Router Node 
+    Options:
+    - name: Name of the node
+-->
 <script type="text/javascript">
     RED.nodes.registerType('router', {
         category: 'toCaro',
         defaults: {
             name: { value: "" },
-            url: { value: "http://127.0.0.1:1880/", required: true },
         },
         inputs: 1,
         outputs: 1,
@@ -20,10 +24,6 @@
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-url"><i class="fa fa-tag"></i> Node-Red URL</label>
-        <input type="text" id="node-input-url" placeholder="i.e. http://127.0.0.1:1880/">
     </div>
 </script>
 

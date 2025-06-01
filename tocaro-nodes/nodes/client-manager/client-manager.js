@@ -1,6 +1,5 @@
 // This Node-RED node manages the creation and registration of clients in a flow.
 // It listens for incoming messages, creates a new client node, and deploys the updated flow to the Node-RED server.
-// It also handles the cleanup of existing clients if a new one with the same ID is received.
 
 const { deployFlow, findAvailablePosition, getFlow } = require("../../utils");
 

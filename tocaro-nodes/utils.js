@@ -1,3 +1,6 @@
+// This file contains utility functions for managing Node-RED flows and client nodes.
+// It is used by the Client-Manager and the Router nodes.
+
 // Function to fetch all flows from the Node-RED server
 // This function uses the Node-RED API to get the flows' configuration
 function getFlow(RED) {

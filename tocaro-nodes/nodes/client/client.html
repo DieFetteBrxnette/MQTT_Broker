@@ -1,10 +1,16 @@
+<!-- 
+    HTML File for custom Client Node 
+    Options:
+    - name: Name of the node
+    - mqttId: Unique identifier for the MQTT device (required)
+-->
+
 <script type="text/javascript">
     RED.nodes.registerType('client', {
         category: 'toCaro',
         defaults: {
             name: { value: "" },
             mqttId: { value: "tocaro", required: true },
-            nodeIcon: { value: "bridge.svg" }
         },
         inputs: 1,
         outputs: 1,
@@ -26,10 +32,6 @@
     <div class="form-row">
         <label for="node-input-mqttId"><i class="fa fa-id-card"></i> MQTT-ID</label>
         <input type="text" id="node-input-mqttId" placeholder="Id of the mqtt device (required)">
-    </div>
-    <div class="form-row">
-        <label for="node-input-nodeIcon"><i class="fa fa-image"></i> Icon</label>
-        <input type="text" id="node-input-nodeIcon" placeholder="Icon filename">
     </div>
 </script>
 
