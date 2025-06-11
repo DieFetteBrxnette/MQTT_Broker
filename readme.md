@@ -3,7 +3,7 @@ Bachelor Thesis @ FAPS - FAU by Paul Marenbach
 
 ## Installation
 
-### Manual
+### Manually
 - Install Node.js with npm from https://nodejs.org/en/download for your machine
 - Run `npm install` to install any dependencies for the server to run (like TypeScript and Node-RED)
 - Install Mosquitto from https://mosquitto.org/download/ for your machine
