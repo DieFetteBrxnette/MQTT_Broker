@@ -1,7 +1,7 @@
 services:
   nodered:
     build: .
-    image: nodered-mqtt:latest
+    image: paulmarenbach/nodered-mqtt:latest
     network_mode: host
     ports:
       - "1880:1880"
@@ -9,6 +9,21 @@ services:
       - node-red-data:/data
     environment:
       - TZ=Europe/Berlin
+    depends_on:
+          - mosquitto
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - mosquitto-config:/mosquitto/config
+      - mosquitto-data:/mosquitto/data
+      - mosquitto-log:/mosquitto/log
 
 volumes:
   node-red-data:
+  mosquitto-config:
+  mosquitto-data:
+  mosquitto-log:
