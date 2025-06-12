@@ -12,6 +12,8 @@ Bachelor Thesis @ FAPS - FAU by Paul Marenbach
 ### Docker
 - Install Docker.
 - Get the Image from https://hub.docker.com/r/paulmarenbach/nodered-mqtt
+- Execute it.
+- In the Node-Red editor choose the Local Docker MQTT-Server for the Display Subscribed Nodes Flow.
 
 ## Running the Mosquitto Server
 You can easily start the MQTT Mosquitto server using the provided scripts for Windows or Linux. If you already have a process running on the required port, you can try to run the force_start scripts, which try to kill the processes on these ports. Mosquitto should log any and all events into the `/logs/mosquitto.log` file.
