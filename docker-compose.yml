@@ -1,29 +1,41 @@
 services:
+  # Node-RED Service
   nodered:
     build: .
-    image: paulmarenbach/nodered-mqtt:latest
-    network_mode: host
+    container_name: nodered
     ports:
       - "1880:1880"
     volumes:
       - node-red-data:/data
-    environment:
-      - TZ=Europe/Berlin
-    depends_on:
-          - mosquitto
+    restart: unless-stopped
+    command: >
+      sh -c "
+        # Kopiere die Konfigurationsdateien mit den korrekten Namen.
+        # Wichtig: Node-RED sucht standardmäßig nach 'settings.js', nicht 'node-red_settings.js'.
+        # Daher benennen wir sie beim Kopieren um.
+        cp -n /usr/src/node-red/node-red_settings.js /data/settings.js &&
+        cp -n /usr/src/node-red/flows.json /data/flows.json &&
+        
+        # Starte danach Node-RED
+        npm start
+      "
 
+  # Mosquitto MQTT Broker Service
   mosquitto:
     image: eclipse-mosquitto:latest
+    container_name: mosquitto
     ports:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      - mosquitto-config:/mosquitto/config
+      # Wir mappen deine mosquitto.conf aus dem Hauptverzeichnis direkt
+      # an den Ort, wo der Container die Konfiguration erwartet.
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
       - mosquitto-data:/mosquitto/data
       - mosquitto-log:/mosquitto/log
+    restart: unless-stopped
 
 volumes:
   node-red-data:
-  mosquitto-config:
   mosquitto-data:
   mosquitto-log:
