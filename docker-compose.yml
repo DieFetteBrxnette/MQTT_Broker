@@ -3,6 +3,7 @@ services:
   nodered:
     build: .
     container_name: nodered
+    image: paulmarenbach/nodered-mqtt:latest
     ports:
       - "1880:1880"
     volumes:
@@ -10,13 +11,8 @@ services:
     restart: unless-stopped
     command: >
       sh -c "
-        # Kopiere die Konfigurationsdateien mit den korrekten Namen.
-        # Wichtig: Node-RED sucht standardmäßig nach 'settings.js', nicht 'node-red_settings.js'.
-        # Daher benennen wir sie beim Kopieren um.
         cp -n /usr/src/node-red/node-red_settings.js /data/settings.js &&
         cp -n /usr/src/node-red/flows.json /data/flows.json &&
-        
-        # Starte danach Node-RED
         npm start
       "
 
@@ -28,8 +24,6 @@ services:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      # Wir mappen deine mosquitto.conf aus dem Hauptverzeichnis direkt
-      # an den Ort, wo der Container die Konfiguration erwartet.
       - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
       - mosquitto-data:/mosquitto/data
       - mosquitto-log:/mosquitto/log

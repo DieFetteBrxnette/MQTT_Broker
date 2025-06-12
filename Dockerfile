@@ -1,13 +1,13 @@
-# Starte mit dem offiziellen Node-RED Image
+# Start with the official Node-RED image
 FROM nodered/node-red:latest
 
-# Wechsle ins Arbeitsverzeichnis
+# Change work dir
 WORKDIR /usr/src/node-red
 
-# Kopiere die Konfigurationsdateien von ihren korrekten Speicherorten
+# Copy Configuration files
 COPY ./node-red_settings.js .
 COPY ./data/flows.json .
 
-# Kopiere und installiere dein lokales Node-Paket
+# Copy local Node modules
 COPY ./tocaro-nodes ./packages/tocaro-nodes
 RUN npm install ./packages/tocaro-nodes
