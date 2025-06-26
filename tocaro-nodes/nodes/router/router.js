@@ -24,19 +24,14 @@ module.exports = function(RED) {
             }
 
             // Check that the signed mqttId is the same as the payload else return to avoid routing multiple messages
-            const match = msg.match(/^\[([^\]]+)\]/);
+            const match = msg.payload.match(/^\[([^\]]+)\]/);
             const signature = match ? match[1] : null;
-
             if (signature !== mqttId) {
                 return;
             }
-            
 
             // Get all conntected nodes for the given mqttId
             const clientNodes = getConnections(RED, mqttId);
-
-            //console.log(clientNodes);
-
             // If the clientNodes is undefined log an error and return
             if (!clientNodes) {
                 this.status({ fill: "red", shape: "ring", text: 'No client found.' });
