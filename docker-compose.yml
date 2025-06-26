@@ -1,7 +1,11 @@
 services:
   # Node-RED Service
   nodered:
-    build: .
+    build: 
+      context: .
+      platforms:
+        - linux/amd64
+        - linux/arm64
     container_name: nodered
     image: paulmarenbach/nodered-mqtt:latest
     ports:
@@ -16,20 +20,5 @@ services:
         npm start
       "
 
-  # Mosquitto MQTT Broker Service
-  mosquitto:
-    image: eclipse-mosquitto:latest
-    container_name: mosquitto
-    ports:
-      - "1883:1883"
-      - "9001:9001"
-    volumes:
-      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
-      - mosquitto-data:/mosquitto/data
-      - mosquitto-log:/mosquitto/log
-    restart: unless-stopped
-
 volumes:
   node-red-data:
-  mosquitto-data:
-  mosquitto-log:

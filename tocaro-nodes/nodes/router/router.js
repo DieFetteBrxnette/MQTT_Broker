@@ -23,6 +23,15 @@ module.exports = function(RED) {
                 return;
             }
 
+            // Check that the signed mqttId is the same as the payload else return to avoid routing multiple messages
+            const match = msg.match(/^\[([^\]]+)\]/);
+            const signature = match ? match[1] : null;
+
+            if (signature !== mqttId) {
+                return;
+            }
+            
+
             // Get all conntected nodes for the given mqttId
             const clientNodes = getConnections(RED, mqttId);
 
