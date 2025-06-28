@@ -13,10 +13,25 @@ if not exist "%DOCKERFILE%" (
     echo Timestamp,Docker_Name,Container_CPU,Container_Mem,Container_NetIO,Container_BlockIO > "%DOCKERFILE%"
 )
 
-set /a "end=%time:~0,2%*3600 + %time:~3,2%*60 + %time:~6,2% + 600"
+REM Get padded hour, minute, second
+set "rawhour=%time:~0,2%"
+set "hour=%rawhour: =0%"
+set "rawmin=%time:~3,2%"
+set "min=%rawmin: =0%"
+set "rawsec=%time:~6,2%"
+set "sec=%rawsec: =0%"
+
+REM Calculate end time (10 minutes from now)
+set /a "end=1*%hour%*3600 + 1*%min%*60 + 1*%sec% + 600"
 
 :loop
-set /a "now=%time:~0,2%*3600 + %time:~3,2%*60 + %time:~6,2%"
+set "rawhour=%time:~0,2%"
+set "hour=%rawhour: =0%"
+set "rawmin=%time:~3,2%"
+set "min=%rawmin: =0%"
+set "rawsec=%time:~6,2%"
+set "sec=%rawsec: =0%"
+set /a "now=1*%hour%*3600 + 1*%min%*60 + 1*%sec%"
 if %now% geq %end% goto :eof
 
 for /f "tokens=2 delims==." %%I in ('"wmic os get localdatetime /value"') do set datetime=%%I

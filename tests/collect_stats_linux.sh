@@ -23,7 +23,13 @@ while [ $SECONDS -lt $end ]; do
 
     dockerstats=$(sudo docker stats --no-stream --format "{{.Name}},{{.CPUPerc}},{{.MemUsage}},{{.NetIO}},{{.BlockIO}}" $CONTAINER)
     if [ -n "$dockerstats" ]; then
-        echo "$datetime,$dockerstats" >> "$DOCKERFILE"
+        # Extract only the used memory (before the slash)
+        docker_name=$(echo "$dockerstats" | cut -d',' -f1)
+        docker_cpu=$(echo "$dockerstats" | cut -d',' -f2)
+        docker_mem=$(echo "$dockerstats" | cut -d',' -f3 | awk -F'/' '{print $1}' | xargs)
+        docker_net=$(echo "$dockerstats" | cut -d',' -f4)
+        docker_block=$(echo "$dockerstats" | cut -d',' -f5)
+        echo "$datetime,$docker_name,$docker_cpu,$docker_mem,$docker_net,$docker_block" >> "$DOCKERFILE"
     else
         echo "$datetime,,,,," >> "$DOCKERFILE"
     fi
