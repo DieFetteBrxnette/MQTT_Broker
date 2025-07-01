@@ -16,7 +16,7 @@ Important: For both ways you need a MQTT Server installed on your machine or som
 - Follow the instructions there.
 
 ## Setting up the Microcontroller
-- Get the MQTTBase.ino file from https://github.com/DieFetteBrxnette/MQTT_ESP32_Code
+- Get the MQTTBase.ino file from https://github.com/paulmarenbach/MQTT_ESP32_Code
 - Adjust the file to match your configuration and make sure to give each device a unique id.
 - Expand to your needs.
 - Upload the MQTTBase.ino file to any and all micocontrollers you want to use (preferably using Arduino IDE, make sure it is configured for the correct device type & model!)
